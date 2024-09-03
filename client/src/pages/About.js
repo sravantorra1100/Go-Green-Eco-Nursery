@@ -27,11 +27,4 @@ const About = () => {
   );
 };
 
-Layout.defaultProps={
-  title:'Eco - Nursery-plants',
-  description: "mern stack project",
-  keywords:"mern,react,node,mongodb",
-  author:"sravan",
-}
-
 export default About;
