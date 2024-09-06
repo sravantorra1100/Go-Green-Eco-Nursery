@@ -3,10 +3,13 @@ import Layout from '../../components/Layout/Layout'
 import AdminMenu from '../../components/Layout/AdminMenu'
 import toast from 'react-hot-toast';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 import { Select } from 'antd';
 const { Option } = Select;
 
+
 const CreateProduct = () => {
+  const navigate=useNavigate()
   const [categories, setCategories] = useState([])
   const [category, setCategory] = useState("")
   const [name, setName] = useState("")
@@ -33,8 +36,29 @@ const CreateProduct = () => {
     getAllCategory();
   }, [])
 
-//handle create - product
-const handleCreate=()=>{ }
+  //handle create - product
+  const handleCreate = async (e) => {
+    e.preventDefault();
+    try {
+      const productData = new FormData()
+      productData.append("name", name)
+      productData.append("description", description)
+      productData.append("price", price)
+      productData.append("quantity", quantity)
+      productData.append("photo", photo)
+      productData.append("category", category)
+      const { data } = axios.post('/api/v1/product/create-product', productData)
+      if(data?.success){
+        toast.error(data?.message)
+      }else{
+        toast.success('product created successfully')
+        navigate('/dashboard/admin/products')
+      }
+    } catch (error) {
+      console.log(error)
+      toast.error('something went wrong')
+    }
+  }
 
   return (
     <Layout title={'Dashboard - Create Product'}>
@@ -47,9 +71,9 @@ const handleCreate=()=>{ }
             <h1>Create Product</h1>
             <div className="m-1 w-75">
               <Select bordered={false} placeholder="Select a category" size="large" showSearch
-                className='form-select mb-3' onChange={(value) => { setCategory(value) }}>
+                className='form-select mb-3' onChange={(value) => { setCategory(value) }} >
                 {categories?.map(c => (
-                  <Option key={c._id} value={c.name}>{c.name}</Option>
+                  <Option key={c._id} value={c._id}>{c.name}</Option>
                 ))}
               </Select>
               <div className="mb-3">
@@ -78,17 +102,17 @@ const handleCreate=()=>{ }
                 <input type="number" value={quantity} placeholder='write a quantity' className='form-control' onChange={(e) => setQuantity(e.target.value)} />
               </div>
               <div className="mb-3">
-                <Select bordered={false} placeholder="select shipping" size='large' showSearch 
-                className='form-select mb-3' onChange={(value)=>{setShipping(value);}}>
-                   <option value="0">No</option>
-                   <option value="1">Yes</option>
+                <Select bordered={false} placeholder="select shipping" size='large' showSearch
+                  className='form-select mb-3' onChange={(value) => { setShipping(value); }}>
+                  <option value="0">No</option>
+                  <option value="1">Yes</option>
                 </Select>
               </div>
-               <div className="mb-3">
+              <div className="mb-3">
                 <button className='btn btn-primary' onClick={handleCreate}>
                   CREATE PRODUCT
                 </button>
-               </div>
+              </div>
             </div>
           </div>
         </div>

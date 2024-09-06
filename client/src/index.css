@@ -90,3 +90,9 @@ border-bottom: 1px solid #ffefba;
     justify-content: center;
 }
 
+
+/* products page */
+.product-link{
+    text-decoration: none !important;
+    color: black !important;
+}
