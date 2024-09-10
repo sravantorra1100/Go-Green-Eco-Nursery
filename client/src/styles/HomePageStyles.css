@@ -92,3 +92,54 @@
   .filters-m{
     margin: 0px !important;
   }
+
+
+/*.......*/
+.filters {
+  background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease;
+}
+.filters:hover {
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+.filters h4 {
+  color: #333;
+  font-family: 'Arial', sans-serif;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+.filters .d-flex {
+  margin-bottom: 20px;
+}
+.filters .d-flex div {
+  margin-bottom: 10px;
+}
+.filters button {
+  background-color: #e74c3c;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+.filters button:hover {
+  background-color: #c0392b;
+}
+.filters .checkbox,
+.filters .radio {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+.filters .checkbox input,
+.filters .radio input {
+  margin-right: 10px;
+}
+
+/*.......*/

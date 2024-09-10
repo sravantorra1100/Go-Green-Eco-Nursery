@@ -48,3 +48,86 @@
   .similar-products .card-img-top {
     height: 300px !important;
   }
+
+  .margint{
+    margin-top: 100px;
+    margin-bottom: 30px;
+  }
+
+
+
+  /*   chatgpt*/
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.review-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.review-title {
+  margin-bottom: 20px;
+  font-size: 1.5em;
+  color: #333;
+}
+
+.review-form {
+  margin-bottom: 20px;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-control {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 1em;
+}
+
+.btn-primary {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1em;
+}
+
+.btn-primary:hover {
+  background-color: #0056b3;
+}
+
+.review-list {
+  margin-top: 20px;
+}
+
+.review-item {
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+}
+
+.review-item:last-child {
+  border-bottom: none;
+}
+
+.review-username {
+  font-weight: bold;
+  color: #333;
+}
+
+.review-text {
+  margin-top: 5px;
+  color: #555;
+}
+    /*   chatgpt*/

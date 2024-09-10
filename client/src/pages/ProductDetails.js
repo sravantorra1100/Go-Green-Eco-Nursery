@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import Layout from '../components/Layout/Layout'
 import axios from 'axios'
+import toast from 'react-hot-toast'
 import { useParams } from 'react-router-dom'
 import "../styles/ProductDetailsStyles.css"
 const ProductDetails = () => {
@@ -34,6 +35,30 @@ const ProductDetails = () => {
         }
     }
 
+
+    {/*Reviews */ }
+    const [username, setUsername] = useState("")
+    const [review, setReview] = useState("")
+    const [reviews, setReviews] = useState([]);
+
+    useEffect(() => {
+        const storedReviews = localStorage.getItem("reviews");
+        if (storedReviews) {
+            setReviews(JSON.parse(storedReviews));
+        }
+    }, []);
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        const newReview = { username, review };
+        const updatedReviews = [...reviews, newReview];
+        setReviews(updatedReviews);
+        localStorage.setItem("reviews", JSON.stringify(updatedReviews));
+        setUsername("");
+        setReview("");
+    };
+    {/* */ }
+
     return (
         <Layout>
             <div className="row container product-details">
@@ -47,7 +72,10 @@ const ProductDetails = () => {
                     <h6>Description : {product.description}</h6>
                     <h6>Price : $ {product.price}</h6>
                     <h6>Category : {product?.category?.name}</h6>
-                    <button className='btn btn-secondary ms-1'>Add to Cart</button>
+                    <h6>Watering Shedule : Once a Day</h6>
+                    <h6>Season-Type : All-Season(Autom)</h6>
+                    <button className='btn btn-secondary ms-1' onClick={() => { toast.success('item added to cart') }}>Add to Cart</button>
+
                 </div>
             </div>
             <hr />
@@ -64,12 +92,51 @@ const ProductDetails = () => {
                                 <h5 className="card-title">{p.name}</h5>
                                 <p className="card-text">{p.description.substring(0, 30)}...</p>
                                 <p className="card-text"> $ {p.price}</p>
-                                 <button className='btn btn-secondary ms-1'>Add to Cart</button>
+                                <button className='btn btn-secondary ms-1' onClick={() => { toast.success('item added to cart') }}>Add to Cart</button>
                             </div>
                         </div>
                     ))}
                 </div>
             </div>
+            <hr />
+
+            {/*Reviews................ */}
+            <div className="review-container">
+                <h5 className="review-title">Write a Review</h5>
+                <form onSubmit={handleSubmit} className="review-form">
+                    <div className="form-group">
+                        <input
+                            type="text"
+                            value={username}
+                            onChange={(e) => setUsername(e.target.value)}
+                            className="form-control"
+                            placeholder='Enter your username'
+                        />
+                    </div>
+                    <div className="form-group">
+                        <input
+                            type="text"
+                            value={review}
+                            onChange={(e) => setReview(e.target.value)}
+                            className="form-control"
+                            placeholder='Enter Review'
+                        />
+                    </div>
+                    <button type="submit" className="btn btn-primary">Submit Review</button>
+                </form>
+                <hr />
+                <h5 className="review-title">Reviews & Ratings</h5>
+                <div className="review-list">
+                    {reviews?.map((r, i) => (
+                        <div key={i} className="review-item">
+                            <span className="review-username">User: {r.username}</span>
+                            <p className="review-text">Review: {r.review}</p>
+                        </div>
+                    ))}
+                </div>
+            </div>
+            {/*................ */}
+
         </Layout>
     )
 }
