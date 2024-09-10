@@ -89,7 +89,7 @@ const CartPage = () => {
                 </div>
                 <div className="container">
                     <div className="row">
-                        <div className="col-md-7 p-0 m-0">
+                        <div className="col-md-12 p-0 m-2">
                             {cart?.map((p) => (
                                 <div className="row card flex-row" key={p._id}>
                                     <div className="col-md-4">
@@ -100,7 +100,7 @@ const CartPage = () => {
                                     <div className="col-md-4 ">
                                         <p>{p.name}</p>
                                         <p>{p.description.substring(0, 30)} ... </p>
-                                        <p>Price : {p.price}</p>
+                                        <p>Price : $ {p.price}</p>
                                         </div>
                                         <div className='col-md-4 cart-remove-btn'>
                                         <button className='btn btn-danger' onClick={() => removeCartItem(p._id)}>Remove</button>
@@ -108,7 +108,7 @@ const CartPage = () => {
                                 </div>
                             ))}
                         </div>
-                        <div className="col-md-5 cart-summary">
+                        <div className="col-md-12 cart-summary">
                             <h2>Cart Summary</h2>
                             <p>Total | Address | Payment</p>
                             <hr />

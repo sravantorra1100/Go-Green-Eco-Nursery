@@ -1,0 +1,87 @@
+/* Container and Toggler */
+.container-fluid {
+    padding: 0 1rem;
+    background-color: #f8f9fa;
+    width: 99% !important;
+  }
+  
+  .navbar-toggler {
+    border: none;
+    background: transparent;
+  }
+  
+  
+  
+  /* Navbar */
+  .navbar-brand {
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+   color: rgba(46, 212, 46, 0.893);
+    text-decoration: none;
+  }
+  .navbar-brand:hover {
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+   color: rgba(34, 124, 78, 0.912);
+    text-decoration: none;
+  }
+  
+  .navbar-brand svg {
+    margin-right: 0.5rem;color:green;
+  }
+  
+  .navbar-nav {
+    display: flex;
+    align-items: center;
+  }
+  
+  .nav-item {
+    margin-left: 1rem;
+  }
+  
+  .nav-link {
+    color: #333;
+    text-decoration: none;
+    font-weight: 500;
+  }
+  
+  .nav-link:hover {
+    color: #007bff;
+  }
+  
+  .nav-link.active {
+    color: #007bff;
+    font-weight: bold;
+  }
+  
+  /* Dropdown Menu */
+  .dropdown-menu {
+    border-radius: 0.5rem;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+  }
+  
+  .dropdown-item {
+    color: #333;
+    text-decoration: none;
+  }
+  
+  .dropdown-item:hover {
+    background-color: #e9ecef;
+  }
+  
+  .dropdown-toggle::after {
+    display: none;
+  }
+  
+  /* Badge */
+  .badge {
+    background-color: #007bff;
+    color: #fff;
+    border-radius: 0.25rem;
+    padding: 0.25rem 0.5rem;
+    font-size: 0.75rem;
+    margin-left: 0.5rem;
+  }
+  

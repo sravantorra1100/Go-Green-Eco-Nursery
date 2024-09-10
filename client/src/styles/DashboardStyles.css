@@ -1,0 +1,35 @@
+/* General container styling */
+.container-fluid {
+    background-color: #f8f9fa; /* Light background color */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    margin: 15px;
+    padding: 15px;
+}
+
+/* Row styling */
+.row {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+/* Column styling */
+.col-md-3, .col-md-9 {
+    padding: 10px;
+}
+
+/* Card styling */
+.card {
+    background-color: #ffffff; /* White background for the card */
+    border: 1px solid #dee2e6; /* Light border */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Light shadow */
+    margin: auto; /* Center the card within the column */
+}
+
+/* Heading styling */
+.card h3 {
+    color: #343a40; /* Dark text color for readability */
+    font-family: 'Arial', sans-serif; /* Font styling */
+    margin-bottom: 10px; /* Space between headings */
+}

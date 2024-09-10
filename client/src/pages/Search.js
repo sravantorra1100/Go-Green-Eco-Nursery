@@ -2,6 +2,7 @@ import React from 'react'
 import Layout from '../components/Layout/Layout'
 import { useSearch } from '../context/search'
 
+
 const Search = () => {
 const[values,setValues]=useSearch()
 
@@ -13,7 +14,7 @@ const[values,setValues]=useSearch()
             <h6>{values?.results.length < 1 ? 'no products found' : `found ${values?.results.length}`}</h6>
             <div className="d-flex flex-wrap mt-4">
             {values?.results.map((p) => (
-              <div className="card m-2" style={{ width: "18rem" }} >
+              <div className="card m-2" key={p._id} style={{ width: "18rem" }} >
                 <img src={`/api/v1/product/product-photo/${p._id}`} className="card-img-top" alt={p.name} style={{ width: "100%", height: "200px" }} />
                 <div className="card-body">
                   <h5 className="card-title">{p.name}</h5>

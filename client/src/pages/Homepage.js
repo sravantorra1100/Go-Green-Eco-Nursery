@@ -100,7 +100,7 @@ const Homepage = () => {
   //get filtered product
   const filterProduct = async () => {
     try {
-      const { data } = await axios.post('/api/v1/product/product-filter/', { checked, radio })
+      const { data } = await axios.post('/api/v1/product/product-filter', { checked, radio })
       setProducts(data?.products)
     } catch (error) {
       console.log(error)
