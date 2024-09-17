@@ -36,3 +36,9 @@
   .category .card-img-top {
     height: 300px !important;
   }
+
+  .btnw{
+    width:200px !important;
+    border-radius: 10px !important;
+    margin: 2px !important;
+  }

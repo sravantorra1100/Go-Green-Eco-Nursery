@@ -16,7 +16,7 @@ const Orders = () => {
     }
   }
   useEffect(() => {
-    if (auth?.token) getOrders()
+    if (auth?.token) getOrders();
   }, [auth?.token])
   return (
     <Layout title={"Your Orders"}>
@@ -43,7 +43,7 @@ const Orders = () => {
                         </tr>
                       </thead>
                       <tbody>
-                        <tr>
+                        <tr >
                           <td>{i + 1}</td>
                           <td>{o?.status}</td>
                           <td>{o?.buyer?.name}</td>

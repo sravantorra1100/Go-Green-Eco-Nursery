@@ -3,6 +3,9 @@ import {isAdmin,requireSignIn} from '../middlewares/authMiddleware.js';
 import { braintreePaymentController, braintreeTokenController, createProductController, deleteProductController, getProductController, getSingleProductController, productCategoryController, productCountController, productFilterController, productListController, productPhotoController, relatedProductController, searchProductController, updateProductController } from '../controllers/productController.js';
 import formidable from 'express-formidable';
 
+import Review from '../models/reviewModel.js'
+import User from '../models/userModel.js'
+import productModel from '../models/productModel.js';
 
 const router =express.Router()
 
@@ -50,6 +53,50 @@ router.get('/braintree/token',braintreeTokenController)
 
 //payments
 router.post('/braintree/payment',requireSignIn,braintreePaymentController)
+
+
+{/* ....reviews */}
+// Create a new review
+router.post('/reviews', async (req, res) => {
+    try {
+      const review = new Review(req.body);
+      await review.save();
+      res.status(201).json(review);
+    } catch (error) {
+      res.status(400).json({ error: error.message });
+    }
+  });
+  
+  // Get all reviews
+  router.get('/reviews', async (req, res) => {
+    try {
+      const reviews = await Review.find();
+      res.status(200).json(reviews);
+    } catch (error) {
+      res.status(500).json({ error: error.message });
+    }
+  });
+
+
+
+
+
+  //get all users
+  router.get('/alll-users', async (req, res) => {
+    try {
+      const users = await User.find();
+      res.status(200).json(users);
+    } catch (error) {
+      res.status(500).json({ error: error.message });
+    }
+  });
+
+{/* .........*/}
+
+
+
+
+
 
 
 export default router

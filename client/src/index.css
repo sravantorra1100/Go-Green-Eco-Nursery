@@ -39,7 +39,7 @@
 .footer{
 color:white;
 padding: 25px;
-background:linear-gradient(to right,#434343,#000000 );
+background: linear-gradient(to right, #b0e57c, #004d00);
 }
 .footer a{
     text-decoration: none;
@@ -51,8 +51,64 @@ color: #ffefba;
 border-bottom: 1px solid #ffefba;
 }
 
+/* General styling for the footer */
+.footer {
+    background-color: green; /* Light gray background for the footer */
+    padding: 20px;
+    color: #333; /* Dark text color */
+    
+}
 
-/* pnf css*/
+.footer h3 {
+    font-size: 1.25rem;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.footer hr {
+    border: 0;
+    height: 1px;
+    background: #e0e0e0;
+    margin: 10px 0;
+}
+.footer p {
+    margin: 5px 0;
+    font-size: 0.875rem;
+}
+.lnk{
+    color: #333 !important;
+}
+.lnk:hover{
+    color: white !important;
+    border-bottom:1px solid white !important ;
+}
+
+.footer .col-md-3, .footer .col-md-2 {
+    flex: 1;
+    padding: 10px;
+}
+
+.footer .d-flex {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.footer .text-dark {
+    color: #333;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .footer .d-flex {
+        flex-direction: column;
+    }
+}
+
+
+
+
+/* page not found css*/
 .pnf{
     display: flex;
     min-height: 65vh;

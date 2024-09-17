@@ -10,7 +10,11 @@
     background: transparent;
   }
   
-  
+  .logo{
+    border: 4px solid rgba(46, 212, 46, 0.893);
+    border-radius: 50px;
+    padding: 5px;
+  }
   
   /* Navbar */
   .navbar-brand {

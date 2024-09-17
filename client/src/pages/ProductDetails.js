@@ -24,7 +24,6 @@ const ProductDetails = () => {
         }
     }
 
-
     //get similar product
     const getSimilarProduct = async (pid, cid) => {
         try {
@@ -36,29 +35,32 @@ const ProductDetails = () => {
     }
 
 
-    {/*Reviews */ }
-    const [username, setUsername] = useState("")
-    const [review, setReview] = useState("")
-    const [reviews, setReviews] = useState([]);
+    {/*  review backend */ }
+    const [cname, setCname] = useState("")
+    const [comment, setComment] = useState("")
+    const [reviews, setReviews] = useState([])
 
-    useEffect(() => {
-        const storedReviews = localStorage.getItem("reviews");
-        if (storedReviews) {
-            setReviews(JSON.parse(storedReviews));
-        }
-    }, []);
-
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        const newReview = { username, review };
-        const updatedReviews = [...reviews, newReview];
-        setReviews(updatedReviews);
-        localStorage.setItem("reviews", JSON.stringify(updatedReviews));
-        setUsername("");
-        setReview("");
-    };
-    {/* */ }
+        const { data } = axios.post('/api/v1/product/reviews', { comment, cname })
+        setCname("")
+        setComment("")
+    }
 
+    const getReviews = async () => {
+        try {
+            const { data } = await axios.get(`/api/v1/product/reviews`);
+            setReviews(data);
+        } catch (error) {
+            console.log(error)
+        }
+    }
+    useEffect(() => {
+        getReviews()
+    }, [])
+    {/*   */ }
+
+    
     return (
         <Layout>
             <div className="row container product-details">
@@ -86,7 +88,7 @@ const ProductDetails = () => {
                 )}
                 <div className="d-flex flex-wrap">
                     {relatedProducts?.map((p) => (
-                        <div className="card m-2" style={{ width: "18rem" }} >
+                        <div className="card m-2" style={{ width: "18rem" }} key={p._id} >
                             <img src={`/api/v1/product/product-photo/${p._id}`} className="card-img-top" alt={p.name} style={{ width: "100%", height: "200px" }} />
                             <div className="card-body">
                                 <h5 className="card-title">{p.name}</h5>
@@ -100,15 +102,18 @@ const ProductDetails = () => {
             </div>
             <hr />
 
-            {/*Reviews................ */}
+
+
+            {/*review backend */}
+
             <div className="review-container">
                 <h5 className="review-title">Write a Review</h5>
                 <form onSubmit={handleSubmit} className="review-form">
                     <div className="form-group">
                         <input
                             type="text"
-                            value={username}
-                            onChange={(e) => setUsername(e.target.value)}
+                            value={cname}
+                            onChange={(e) => setCname(e.target.value)}
                             className="form-control"
                             placeholder='Enter your username'
                         />
@@ -116,8 +121,8 @@ const ProductDetails = () => {
                     <div className="form-group">
                         <input
                             type="text"
-                            value={review}
-                            onChange={(e) => setReview(e.target.value)}
+                            value={comment}
+                            onChange={(e) => setComment(e.target.value)}
                             className="form-control"
                             placeholder='Enter Review'
                         />
@@ -129,16 +134,18 @@ const ProductDetails = () => {
                 <div className="review-list">
                     {reviews?.map((r, i) => (
                         <div key={i} className="review-item">
-                            <span className="review-username">User: {r.username}</span>
-                            <p className="review-text">Review: {r.review}</p>
+                            <span className="review-username">User: {r.cname}</span>
+                            <p className="review-text">Review: {r.comment}</p>
                         </div>
                     ))}
                 </div>
             </div>
-            {/*................ */}
 
+            {/* */}
         </Layout>
     )
 }
 
 export default ProductDetails
+
+

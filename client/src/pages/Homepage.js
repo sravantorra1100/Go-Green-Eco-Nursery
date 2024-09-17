@@ -109,10 +109,35 @@ const Homepage = () => {
 
   return (
     <Layout title={'Best Plants'}>
-      <img src="/images/banner.png" className='banner-img' alt="errLoading" width={"100%"} height={"400px"} />
+      {/* <img src="/images/banner.png" className='banner-img' alt="errLoading" width={"100%"} height={"400px"} />*/}
+      <div id="carouselExampleIndicators" className="carousel slide carouselcss">
+        <div className="carousel-indicators">
+          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" className="active" aria-current="true" aria-label="Slide 1"></button>
+          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        </div>
+        <div className="carousel-inner">
+          <div className="carousel-item active">
+            <img src="/images/banner.png" className="d-block w-100 carouselcss" alt="errorLoading" />
+          </div>
+          <div className="carousel-item">
+            <img src="/images/banner2.jpeg" className="d-block w-100 carouselcss" alt="errorLoading" />
+          </div>
+          <div className="carousel-item">
+            <img src="/images/banner3.jpeg" className="d-block w-100 carouselcss" alt="errorLoading" />
+          </div>
+        </div>
+        <button className="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+          <span className="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span className="visually-hidden">Previous</span>
+        </button>
+        <button className="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+          <span className="carousel-control-next-icon" aria-hidden="true"></span>
+          <span className="visually-hidden">Next</span>
+        </button>
+      </div>
 
       <div className="container-fluid row mt-3 home-page">
-
         <div className="col-md-8 ">
           <h1 className="text-center">All Products</h1>
           <div className="d-flex flex-wrap">
